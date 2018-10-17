@@ -16,7 +16,7 @@ cout << ", " << age << " years old" << endl;
 
 ### 二、访问权限
 
-![access](pic\Snipaste_2018-10-17_19-51-20.png)
+![access](pic/Snipaste_2018-10-17_19-51-20.png)
 
 ### 三、析构函数
 

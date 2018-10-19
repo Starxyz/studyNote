@@ -16,6 +16,8 @@ cout << ", " << age << " years old" << endl;
 
 ### 二、访问权限
 
+默认为 private
+
 ![access](../pic/Snipaste_2018-10-17_19-51-20.png)
 
 ### 三、析构函数
@@ -37,4 +39,41 @@ cout << ", " << age << " years old" << endl;
 
 深拷贝、浅拷贝， 如果一个类中有诸如int * 这样的类型，浅拷贝产生的成员与源对象的int * 指向同一个内存地址，会带来析构函数的安全隐患。因为此时有两个对象，一个对象销毁的时候，int *指向的内存已经被释放，当另一个对象也被销毁的时候，会重新执行int * 的释放，此时就出现问题了。二次delete一个悬垂指针行为是未定义的。
 
+### 五、explicit
+
+可以阻止不应该允许的经过转换构造函数进行的隐式转换发生，只对有一个参数的类构造函数有效
+
+```
+//
+// Created by yuan on 2018/10/19.
+//
+#include <iostream>
+using namespace std;
+
+class Human
+{
+    int age;
+public:
+    explicit Human(int huanmAge) : age(huanmAge) {}
+//    Human(int huanmAge) : age(huanmAge) {}
+};
+
+void DoSomething(Human person)
+{
+    cout << "Human sent did something" << endl;
+    return;
+}
+
+int main()
+{
+    Human kid(10);
+    Human anotherKid = Human(11);
+    DoSomething(kid);
+
+//    Human anotherKid2 = 11;//failure: implicit conversion not work
+//    DoSomething(10);
+    return 0;
+}
+
+```
 

@@ -77,3 +77,32 @@ int main()
 
 ```
 
+### 五、this
+
+this 是 C++ 中的一个关键字，也是一个 const 指针，它指向当前对象，通过它可以访问当前对象的所有成员。
+
+this 只能用在类的内部
+
+注意，this 是一个指针，要用`->`来访问成员变量或成员函数。
+
+### 六、sizeof 一个类
+
+sizeof 是一个运算符。
+
+```
+class Huamn
+{
+    private:
+    int age;
+    bool gender;
+}
+Human man;
+int a = sizeof(Huamn);
+int b = sizeof(man);
+```
+
+$$
+a = b = 8bytes
+$$
+
+int 占4个字节，bool占1个字节，由于字节补全，所以一共占据 8个字节。

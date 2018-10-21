@@ -88,3 +88,21 @@ void bubbleSort(int arr[], int size)
 }
 ```
 
+### 3、insertionSort
+
+Insertion sort is simple to implement and a stable sorting algorithm. During the process of sorting, it creates a sorted subsequence. 
+
+![insertionSort](../../pic/Insertion-sort-example.gif)
+
+```c++
+void insert(int arr[], int i)
+{
+    int temp = arr[i];
+    int j;
+    for (j = i; j > 0 && temp < arr[j-1]; j--)
+        arr[j] = arr[j-1];
+        
+    arr[j] = temp;
+}
+```
+

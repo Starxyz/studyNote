@@ -46,7 +46,7 @@ Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping 
 
 ![bubbleSort](../../pic/Bubble-sort-example-300px.gif)
 
-```
+```c++
 void bubbleSort(int arr[], int size)
 {
     int i, j;
@@ -60,5 +60,31 @@ void bubbleSort(int arr[], int size)
     }
 }
 
+```
+
+**Optimized Implementation:**
+[The above function always runs O(n^2) time even if the array is sorted. It can be optimized by stopping the algorithm if inner loop didn’t cause any swap.](https://www.geeksforgeeks.org/bubble-sort/)
+
+```c++
+void bubbleSort(int arr[], int size)
+{
+    int i, j;
+    bool swapped;
+    for (i = size - 1; i > 0; i--)
+    {
+    	swapped = false;
+        for (j = 0; j < i; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                swap(arr[j], arr[j+1]);
+                swapped = true;
+            }            
+        }
+        //if no elements were swapped by inner loop, then break
+        if (!swapped)
+            break;
+    }
+}
 ```
 

@@ -151,3 +151,41 @@ void merge(int arr[], int l, int m, int r)
 
 **Auxiliary Space:** O(n)
 
+### 5、quickSort
+
+QuickSort is a __Divide and Conquer__ algorithm. It picks an element as pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways.
+
+![quickSort](../../pic/Quicksort-example.gif)
+
+
+
+![quickSort1](../../pic/Sorting_quicksort_anim.gif)
+
+
+
+```c++
+int partition(int arr[], int l, int r) {
+    int key = arr[l];
+    int j = l;// arr[l+1,...j] < key, arr[j+1,...i] > v
+    for (int i = l+1; i <= r; i++) {
+        if (arr[i] < key)
+            swap(arr[++j], arr[i]);//i is the current position
+    }
+    swap(arr[l], arr[j]);
+    return j;
+}
+
+void quickSort(int arr[], int l, int r) {
+    if (l >= r)
+        return;
+    int posi = partition(arr, l, r);
+    quickSort(arr, l, posi-1);
+    quickSort(arr, posi+1, r);
+}
+
+void quickSort(int arr[], int n){
+    quickSort(arr, 0, n-1);
+}
+```
+
+there are some optimizations to improve quick sort. update later.

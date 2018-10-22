@@ -106,3 +106,72 @@ a = b = 8bytes
 $$
 
 int 占4个字节，bool占1个字节，由于字节补全，所以一共占据 8个字节。
+
+### 七、struct vs class
+
+```c++
+struct Human
+{
+    // constructor, public by default (as no access specified is mentioned)
+    //				class's accessibility private by default
+    Human(const MyString& humansName, int humansAge, bool humansGender)
+    	: name(humansName), age (humansAge), Gender(humansGender) {}int GetAge ()
+    {
+        return age;
+    }
+private:
+    int age;
+    bool gender;
+    MyString name;
+};
+```
+
+a struct Human is similar to class Human, and instantiation of an object of type struct would be similar to type class as well 
+
+Unless specified,members in a struct are public by default (private for a class) 
+
+### 八、friend
+
+Using the friend Keyword to Allow an External Function Show() Access to Private Data Members 
+
+```c++
+//
+// Created by yuan on 2018/10/22.
+//
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Human
+{
+private:
+    friend void Show(const Human& person);
+    string name;
+public:
+    Human(string humanName)
+    {
+        name = humanName;
+    }
+};
+
+void Show(const Human& person)
+{
+    cout << person.name << endl;
+}
+
+int main()
+{
+    Human man("Amy");
+    Show(man);
+
+    return 0;
+}
+
+
+```
+
+if we delete the keyword 'friend', we get an compile error
+
+'std::string Human::name' is private within this context
+
+Like functions, external classes can also be designated as a trusted friend

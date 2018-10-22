@@ -26,7 +26,7 @@ arr[] = 12 10 16 11 9 7
 
 ![selectionSort](../../pic/Snipaste_2018-10-20_23-54-57.png)
 
-```
+```c++
 void selectionSort(int arr[], int n){
     for(int i = 0 ; i < n ; i ++){
         // find the minimum element in [i, n)
@@ -105,4 +105,49 @@ void insert(int arr[], int i)
     arr[j] = temp;
 }
 ```
+
+__application__: Insertion sort is used when number of elements is small. It can also be useful when input array is almost sorted, only few elements are misplaced in complete big array.
+
+__Optimized__ : use binary search to find the proper location to insert.
+
+### 4、mergeSort
+
+Merge sort uses the **divide and conquer** philosophy. 
+
+1. Divide the unsorted list into *n* sublists, each containing 1 element (a list of 1 element is considered sorted).
+
+2. Repeatedly [merge](https://en.wikipedia.org/wiki/Merge_algorithm) sublists to produce new sorted sublists until there is only 1 sublist remaining. This will be the sorted list.
+
+   ![mergeSort](../../pic/Merge-sort-example-300px.gif)
+
+
+```c++
+void mergeSort(int arr[], int l, int r) {
+    if (l < r)   {
+        int m = l+(r-l)/2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m+1, r);
+        merge(arr, l, m, r);
+    }
+}
+/* use two pointer for sorting */
+void merge(int arr[], int l, int m, int r)
+{
+     vector<int> nums(r-l+1);
+     int left = l;
+     int right = m + 1;
+     int i;
+     for (i = 0; left <= m && right <= r; i++)
+         nums[i] = arr[left] < arr[right] ? arr[left++] : arr[right++];
+    
+     while (left <= m)
+         nums[i++] = arr[left++];
+     while (right <= r)
+         nums[i++] = arr[right++];
+     for (i = 0; i < nums.size(); i++)
+         arr[l++] = nums[i];
+}
+```
+
+**Auxiliary Space:** O(n)
 

@@ -190,4 +190,7 @@ void quickSort(int arr[], int n){
 }
 ```
 
-there are some optimizations to improve quick sort. update later.
+comparing to merge sort, quick sort doesn't require any extra storage. 
+
+There are some ways to improved quick sort, such as 3 way quick sort, etc.
+

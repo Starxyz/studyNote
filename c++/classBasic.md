@@ -6,11 +6,11 @@
 
 可以使用初始化列表来初始化字段
 
-```
+```c++
 Human(string humansName, int humansAge):name(humansName), age(humansAge)
 {
-cout << "Constructed a human called " << name;
-cout << ", " << age << " years old" << endl;
+    cout << "Constructed a human called " << name;
+    cout << ", " << age << " years old" << endl;
 }
 ```
 
@@ -24,7 +24,7 @@ cout << ", " << age << " years old" << endl;
 
 一个类如果没有显式定义析构函数，则有编译器自动生成一个dummy destructor，但是这个析构函数不会清理动态分配的内存。析构函数没有参数，也没有返回值
 
-```
+```c++
     ~MyString()
     {
         cout<<"Invoking destructor, clearing up" << endl;
@@ -43,7 +43,7 @@ cout << ", " << age << " years old" << endl;
 
 可以阻止不应该允许的经过转换构造函数进行的隐式转换发生，只对有一个参数的类构造函数有效
 
-```
+```c++
 //
 // Created by yuan on 2018/10/19.
 //
@@ -89,7 +89,7 @@ this 只能用在类的内部
 
 sizeof 是一个运算符。
 
-```
+```c++
 class Huamn
 {
     private:
@@ -175,3 +175,32 @@ if we delete the keyword 'friend', we get an compile error
 'std::string Human::name' is private within this context
 
 Like functions, external classes can also be designated as a trusted friend
+
+### 九、union
+
+与struct 类似，默认为public，但是不能继承
+
+### 十、aggregate initialization 
+
+在`C++`中对于聚合体（aggregate）的初始化称为聚合初始化
+
+```c++
+struct Aggregate1
+{
+    int num;
+    double pi;
+};
+//我们可以这样来初始化
+Aggregate1 a1{ 2017, 3.14 }; 
+//另一个例子
+struct Aggregate2
+{
+    int num;
+    char hello[6];
+    int impYears[5];
+};
+Aggregate2 a2 {42, {'h', 'e', 'l', 'l', 'o'}, {1998, 2003, 2011, 2014, 2017}};
+```
+
+
+

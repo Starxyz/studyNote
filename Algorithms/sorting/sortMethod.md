@@ -95,14 +95,16 @@ Insertion sort is simple to implement and a stable sorting algorithm. During the
 ![insertionSort](../../pic/Insertion-sort-example.gif)
 
 ```c++
-void insert(int arr[], int i)
-{
-    int temp = arr[i];
-    int j;
-    for (j = i; j > 0 && temp < arr[j-1]; j--)
-        arr[j] = arr[j-1];
-        
-    arr[j] = temp;
+void insertSort(int arr[], int n)
+{   
+    for (i = 1; i <= n; i++)
+    {
+        int temp = arr[i];
+        int j;
+        for (j = i; j > 0 && temp < arr[j-1]; j--)
+        	arr[j] = arr[j-1];        
+    	arr[j] = temp;
+    }    
 }
 ```
 

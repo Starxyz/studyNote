@@ -194,3 +194,62 @@ comparing to merge sort, quick sort doesn't require any extra storage.
 
 There are some ways to improved quick sort, such as 3 way quick sort, etc.
 
+### 6、heapSort
+
+![quickSort1](../../pic/Heapsort-example.gif)
+
+1. maintaining the max-heap property in a tree where both sub-trees are max-heaps, we need to run heapify on the root element repeatedly until it is larger than its children or it becomes a leaf node.
+
+   ```c++
+   void heapify(int arr[], int n, int i)  {
+         int largest = i;
+         int l = 2*i + 1;
+         int r = 2*i + 2;
+         
+         if (l < n && arr[l] > arr[largest])
+           largest = l;
+           
+         if (r < n && arr[r] > arr[largest])
+           largest = r;
+           
+         if (i != largest) {
+             swap(arr[i], arr[largest]);
+             heapify(arr, n, largest);
+         }
+   }
+   ```
+
+2. building a max-heap from any tree. 
+
+   ```c++
+   
+   void buildHeap(int arr[], int n)  { 
+       for (int i = n/2 - 1; i >= 0; i--)//all nodes after i is leaf, they don't need to heapify
+           heapify(arr, n, i);
+   }
+   ```
+
+3. heapSort
+
+- Since the tree satisfies Max-Heap property, then the largest item is stored at the root node.
+
+- Remove the root element and put at the end of the array (nth position) Put the last item of the tree (heap) at the vacant place.
+
+- Reduce the size of the heap by 1 and heapify the root element again so that we have highest element at root.
+
+- The process is repeated until all the items of the list is sorted.
+
+```c++
+void heapSort(int arr[], int n)
+{
+    buildHeap(arr, n);
+    for (int i=n-1; i>=0; i--)
+    {
+        swap(arr[0], arr[i]);
+        heapify(arr, i, 0);
+    }
+}
+```
+
+
+

@@ -31,7 +31,7 @@ int binarySearch(int arr[], int n, int target)
         int m = l + (r - l) / 2;
         if (arr[m] == target)
             return m;
-        if (target < arr[m])
+        if (arr[m] > target)
             r = m ;//arr[l...m)
         else 
             l = m + 1;//arr[m+1...r)

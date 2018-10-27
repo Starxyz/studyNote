@@ -128,3 +128,76 @@ int* search(struct node* root, int data)
 
 ```
 
+### 3、traversal
+
+- preorder
+
+- inorder
+
+- postorder
+
+- level order
+
+  ```c++
+  
+  struct node
+  {
+      int data;
+      struct node* left;
+      struct node* right;
+  }
+  
+  //preorder
+  void preorder(struct node* root)
+  {
+      if (root == NULL)
+          return;
+      cout << root->data;
+      preorder(root->left);
+      preorder(root->right);
+  }
+  
+  //inorder
+  void inorder(struct node* root)
+  {
+      if (root == NULL)
+          return;
+      inorder(root->left);
+      cout << root->data;
+      inorder(root->right);
+  }
+  
+  //postorder
+  void postorder(struct node* root)
+  {
+      if (root == NULL)
+          return;
+      postorder(root->left);
+      postorder(roor->right);
+      cout << root->data;
+  }
+  
+  ```
+  ![bfs](../../pic/Animated_BFS.gif)
+
+  black means pop
+
+  brown means push
+
+  ```c++
+  void levelOrder(struct node* root)
+  {
+      queue<struct node*> q;
+      q.push(root);
+      while (!q.empty())
+      {
+          struct node* node = q.front();
+          q.pop();
+          cout << node->data;
+          if (node->left)
+              q.push(node->left);
+          if (node->right)
+              q.push(node->right);
+      }
+  }
+  ```

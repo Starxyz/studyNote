@@ -17,7 +17,7 @@ void getNextArr(string match, int next[])
             next[pos++] = ++cn;
         else if (cn > 0)
             cn = next[cn];
-        else
+        else	//if cn=0...not matched, next[pos] = 0;
             next[pos++] = 0;
     }
     
@@ -44,7 +44,7 @@ int kmp(string text, string match)
         else if (next[mi] == -1)
             si++;
         else
-            mi = next[mi];
+            mi = next[mi];//shift right
     }
     return mi == m ?  si - mi : -1;
 }

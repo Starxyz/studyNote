@@ -24,7 +24,7 @@ arr[] = 12 10 16 11 9 7
 7 9 10 11 12 16
 ```
 
-![selectionSort](../../pic/Snipaste_2018-10-20_23-54-57.png)
+![selectionSort](../../pic/Selection-Sort-Animation.gif)
 
 ```c++
 void selectionSort(int arr[], int n){

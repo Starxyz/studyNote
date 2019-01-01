@@ -1,4 +1,4 @@
-package dsa;
+import java.security.PublicKey;
 
 public class LinkedList<E>
 {
@@ -137,6 +137,36 @@ public class LinkedList<E>
         return false;
     }
 
+    public E remove(int index)
+    {
+        if (index < 0 || index >= size)
+        {
+            throw new IllegalArgumentException("Remove failed. Illegal index.");
+        }
+
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++)
+        {
+            prev = prev.next;
+        }
+        Node retNode = prev.next;
+        prev.next = retNode.next;
+        retNode.next = null;
+        --size;
+
+        return retNode.e;
+    }
+
+    public E removeFirst()
+    {
+        return remove(0);
+    }
+
+    public E removeLast()
+    {
+        return remove(size - 1);
+    }
+
     @Override
     public String toString()
     {
@@ -144,11 +174,13 @@ public class LinkedList<E>
         Node cur = dummyHead.next;
         while (cur != null)
         {
-            sb.append(cur+"->");//cur has toString() method
+            sb.append(cur + "->");//cur has toString() method
             cur = cur.next;
         }
         sb.append("null");//indicates tail
 
         return sb.toString();
     }
+
+
 }

@@ -1,5 +1,3 @@
-package dsa;
-
 public class Main
 {
     public static void main(String[] args)
@@ -14,5 +12,14 @@ public class Main
 
         list.add(2, 66);
         System.out.println(list);
+
+        list.remove(2);
+        System.out.println(list);
+        list.removeLast();
+        System.out.println(list);
+
+        list.removeFirst();
+        System.out.println(list);
+
     }
 }

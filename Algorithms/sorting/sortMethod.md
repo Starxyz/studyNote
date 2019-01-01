@@ -168,7 +168,7 @@ QuickSort is a __Divide and Conquer__ algorithm. It picks an element as pivot an
 ```c++
 int partition(int arr[], int l, int r) {
     int key = arr[l];
-    int j = l;// arr[l+1,...j] < key, arr[j+1,...i] > v
+    int j = l;// arr[l+1,...j] < key, arr[j+1,...i] > key
     for (int i = l+1; i <= r; i++) {
         if (arr[i] < key)
             swap(arr[++j], arr[i]);//i is the current position
